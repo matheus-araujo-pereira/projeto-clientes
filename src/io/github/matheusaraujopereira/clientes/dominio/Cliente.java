@@ -1,6 +1,5 @@
 package io.github.matheusaraujopereira.clientes.dominio;
 
-import java.util.Arrays;
 import java.util.UUID;
 
 import io.github.matheusaraujopereira.clientes.dominio.enums.TipoSexo;
@@ -70,7 +69,6 @@ public class Cliente {
     result = prime * result + ((nome == null) ? 0 : nome.hashCode());
     result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
     result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
-    result = prime * result + Arrays.hashCode(foto);
     return result;
   }
 
@@ -99,8 +97,6 @@ public class Cliente {
     } else if (!cpf.equals(other.cpf))
       return false;
     if (sexo != other.sexo)
-      return false;
-    if (!Arrays.equals(foto, other.foto))
       return false;
     return true;
   }
