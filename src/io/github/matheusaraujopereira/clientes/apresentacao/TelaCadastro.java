@@ -1,10 +1,18 @@
 package io.github.matheusaraujopereira.clientes.apresentacao;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+import io.github.matheusaraujopereira.clientes.dominio.Cliente;
+import io.github.matheusaraujopereira.clientes.dominio.enums.TipoSexo;
 
 public class TelaCadastro extends JFrame {
 
@@ -14,7 +22,9 @@ public class TelaCadastro extends JFrame {
 
   private JTextField campoNome;
   private JTextField campoCpf;
-  private JComboBox<String> campoSexo;
+  private JComboBox<TipoSexo> campoSexo;
+
+  private JButton botaoSalvar;
 
   public TelaCadastro() {
     construirTela();
@@ -52,16 +62,35 @@ public class TelaCadastro extends JFrame {
     campoCpf.setBounds(120, 60, 200, 30);
     getContentPane().add(campoCpf);
 
-    campoSexo = new JComboBox<>(new String[] { "Masculino", "Feminino", "Outro" });
+    TipoSexo[] tipoSexo = { null, TipoSexo.M, TipoSexo.F, TipoSexo.O };
+    campoSexo = new JComboBox<>(tipoSexo);
     campoSexo.setBounds(120, 100, 200, 30);
     getContentPane().add(campoSexo);
   }
 
   private void adicionarBotoes() {
-
+    botaoSalvar = new JButton("Salvar");
+    botaoSalvar.setBounds(120, 140, 100, 30);
+    botaoSalvar.addActionListener(botaoSalvar());
+    getContentPane().add(botaoSalvar);
   }
 
   private void adicionarComponentesFoto() {
 
+  }
+
+  private ActionListener botaoSalvar() {
+    return new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+
+        Cliente cliente = new Cliente();
+        cliente.setNome(campoNome.getText());
+        cliente.setCpf(campoCpf.getText());
+        cliente.setSexo((TipoSexo) campoSexo.getSelectedItem());
+
+        JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
+      }
+    };
   }
 }

@@ -2,12 +2,14 @@ package io.github.matheusaraujopereira.clientes.dominio;
 
 import java.util.UUID;
 
+import io.github.matheusaraujopereira.clientes.dominio.enums.TipoSexo;
+
 public class Cliente {
 
   private UUID codigo;
   private String nome;
   private String cpf;
-  private String sexo;
+  private TipoSexo sexo;
   private byte[] foto;
 
   public Cliente() {
@@ -38,11 +40,11 @@ public class Cliente {
     this.cpf = cpf;
   }
 
-  public String getSexo() {
+  public TipoSexo getSexo() {
     return sexo;
   }
 
-  public void setSexo(String sexo) {
+  public void setSexo(TipoSexo sexo) {
     this.sexo = sexo;
   }
 
