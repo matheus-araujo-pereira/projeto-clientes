@@ -89,7 +89,7 @@ public class TelaCadastro extends JFrame {
         cliente.setCpf(campoCpf.getText());
         cliente.setSexo((TipoSexo) campoSexo.getSelectedItem());
 
-        JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
+        JOptionPane.showMessageDialog(null, cliente);
       }
     };
   }
