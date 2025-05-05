@@ -13,6 +13,7 @@ import javax.swing.WindowConstants;
 
 import io.github.matheusaraujopereira.clientes.dominio.Cliente;
 import io.github.matheusaraujopereira.clientes.dominio.enums.TipoSexo;
+import io.github.matheusaraujopereira.clientes.logica.Cadastro;
 
 public class TelaCadastro extends JFrame {
 
@@ -88,6 +89,9 @@ public class TelaCadastro extends JFrame {
         cliente.setNome(campoNome.getText());
         cliente.setCpf(campoCpf.getText());
         cliente.setSexo((TipoSexo) campoSexo.getSelectedItem());
+
+        Cadastro<Cliente> logica = new CadastroFake();
+        logica.criar(cliente);
 
         JOptionPane.showMessageDialog(null, cliente);
       }
